@@ -1,0 +1,29 @@
+<nav class="nav" [class.scrolled]="scrolled">
+  <div class="nav__inner">
+    <!-- Logo -->
+    <a routerLink="/" class="nav__logo" (click)="closeMobile()">
+      <span class="nav__logo-name">BFEF Kenya</span>
+      <span class="nav__logo-tag">Education Foundation</span>
+    </a>
+
+    <!-- Desktop links -->
+    <ul class="nav__links" [class.open]="mobileOpen">
+      <li><a routerLink="/about" (click)="closeMobile()">About</a></li>
+      <li><a routerLink="/leadership" (click)="closeMobile()">Leadership</a></li>
+      <li><a routerLink="/constitution" (click)="closeMobile()">Constitution</a></li>
+      <li><a routerLink="/contact" (click)="closeMobile()">Contact</a></li>
+      <li>
+        <a routerLink="/contact" class="btn btn--primary" (click)="closeMobile()">
+          Support a Child
+        </a>
+      </li>
+    </ul>
+
+    <!-- Mobile burger -->
+    <button class="nav__burger" (click)="toggleMobile()" aria-label="Toggle menu">
+      <span [style.transform]="mobileOpen ? 'rotate(45deg) translate(5px, 5px)' : ''"></span>
+      <span [style.opacity]="mobileOpen ? '0' : '1'"></span>
+      <span [style.transform]="mobileOpen ? 'rotate(-45deg) translate(5px, -5px)' : ''"></span>
+    </button>
+  </div>
+</nav>

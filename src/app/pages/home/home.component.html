@@ -1,0 +1,160 @@
+<!-- ═══════════════════════════════
+     HERO — ruled notebook backdrop
+═══════════════════════════════ -->
+<section class="hero ruled-bg">
+  <div class="container hero__inner">
+    <div class="hero__content" appScrollReveal>
+      <span class="eyebrow">Bright Future Education Foundation Kenya</span>
+      <h1 class="display-1 hero__headline">
+        Education Today,<br>
+        <em class="text-amber">Leadership Tomorrow</em>
+      </h1>
+      <p class="hero__lead">
+        We believe every Kenyan child deserves the chance to learn, grow, and
+        become the leader their community needs — regardless of what they were
+        born into.
+      </p>
+      <div class="hero__actions">
+        <a routerLink="/contact" class="btn btn--primary">Support a Child</a>
+        <a routerLink="/about" class="btn btn--outline">Learn More</a>
+      </div>
+    </div>
+
+    <!-- Floating credential badges — builds trust immediately -->
+    <div class="hero__badges" appScrollReveal>
+      <div class="badge card">
+        <span class="badge__icon">🇰🇪</span>
+        <div>
+          <p class="badge__label">Registered in</p>
+          <p class="badge__value">Kenya</p>
+        </div>
+      </div>
+      <div class="badge card">
+        <span class="badge__icon">📋</span>
+        <div>
+          <p class="badge__label">Governed by</p>
+          <p class="badge__value">Formal Constitution</p>
+        </div>
+      </div>
+      <div class="badge card">
+        <span class="badge__icon">👥</span>
+        <div>
+          <p class="badge__label">Led by</p>
+          <p class="badge__value">7-Member Board</p>
+        </div>
+      </div>
+      <div class="badge card">
+        <span class="badge__icon">🎯</span>
+        <div>
+          <p class="badge__label">100% of funds to</p>
+          <p class="badge__value">Program Delivery</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     STATS
+═══════════════════════════════ -->
+<section class="section section--navy" id="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div
+        *ngFor="let stat of stats; let i = index"
+        class="stat-item"
+        appScrollReveal
+        [class]="'fade-in-delay-' + (i + 1)"
+      >
+        <span class="stat-number">{{ currentValues[i] }}{{ stat.suffix }}</span>
+        <span class="stat-label">{{ stat.label }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     WHAT WE DO
+═══════════════════════════════ -->
+<section class="section section--white">
+  <div class="container">
+    <div class="text-center mb-48" appScrollReveal>
+      <span class="eyebrow eyebrow--green">Our Programs</span>
+      <h2 class="section-heading">How we change lives</h2>
+      <div class="ruled-divider ruled-divider--amber" style="justify-content:center; gap:12px">
+        <div class="ruled-divider__line" style="max-width:80px"></div>
+      </div>
+      <p class="text-slate" style="max-width:560px; margin:0 auto">
+        Every program is designed to address a real barrier — not just school
+        fees, but the full set of obstacles standing between a child and their
+        future.
+      </p>
+    </div>
+
+    <div class="programs-grid">
+      <div
+        *ngFor="let prog of programs; let i = index"
+        class="program-card card"
+        appScrollReveal
+        [class]="'fade-in-delay-' + (i + 1)"
+      >
+        <span class="program-card__icon">{{ prog.icon }}</span>
+        <h3 class="program-card__title">{{ prog.title }}</h3>
+        <p class="program-card__desc text-slate">{{ prog.desc }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     MISSION PULL-QUOTE
+═══════════════════════════════ -->
+<section class="section section--parchment">
+  <div class="container pullquote-wrap" appScrollReveal>
+    <div class="pullquote">
+      <span class="pullquote__mark">"</span>
+      <blockquote class="pullquote__text display-2">
+        To ensure every needy child and youth in Kenya has access to quality
+        education and opportunities for a better future.
+      </blockquote>
+      <div class="pullquote__source">
+        <span class="eyebrow">Our Vision</span>
+        <p class="text-slate" style="font-size:13px">
+          Bright Future Education Foundation Kenya
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     TRANSPARENCY CTA
+═══════════════════════════════ -->
+<section class="section section--green-pale">
+  <div class="container trust-strip" appScrollReveal>
+    <div class="trust-strip__content">
+      <span class="eyebrow eyebrow--green">Donor Confidence</span>
+      <h2 class="section-heading text-navy">
+        We run on transparency
+      </h2>
+      <p class="text-slate mb-32" style="max-width: 460px">
+        Our board meets quarterly. Every withdrawal requires two signatories.
+        Our full constitution is available for any potential partner to read.
+      </p>
+      <div style="display:flex; gap:16px; flex-wrap:wrap">
+        <a routerLink="/constitution" class="btn btn--outline-navy">
+          Read the Constitution
+        </a>
+        <a routerLink="/leadership" class="btn btn--primary">
+          Meet the Board
+        </a>
+      </div>
+    </div>
+    <div class="trust-strip__pillars">
+      <div class="pillar" *ngFor="let p of ['Integrity', 'Accountability', 'Transparency', 'Compassion']">
+        <span class="pillar__check">✓</span>
+        <span class="pillar__label">{{ p }}</span>
+      </div>
+    </div>
+  </div>
+</section>

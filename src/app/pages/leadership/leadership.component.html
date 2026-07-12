@@ -1,0 +1,129 @@
+<section class="section section--navy page-header">
+  <div class="container" appScrollReveal>
+    <span class="eyebrow eyebrow--mist">Governance</span>
+    <h1 class="display-2 text-white mb-16">Our Leadership</h1>
+    <p style="color:rgba(255,255,255,0.7); max-width:560px; font-size:17px">
+      BFEF Kenya is governed by a seven-member board serving three-year terms,
+      as defined in Article 7 of our constitution.
+    </p>
+  </div>
+</section>
+
+<!-- Governance note -->
+<section class="section section--parchment" appScrollReveal>
+  <div class="container governance-note">
+    <div class="gn-item">
+      <span class="gn-icon">📋</span>
+      <div>
+        <p class="gn-label">Formal Constitution</p>
+        <p class="gn-desc">All governance is defined in our registered constitution</p>
+      </div>
+    </div>
+    <div class="gn-item">
+      <span class="gn-icon">🗳️</span>
+      <div>
+        <p class="gn-label">3-Year Terms</p>
+        <p class="gn-desc">Officials serve elected terms with renewal by member vote</p>
+      </div>
+    </div>
+    <div class="gn-item">
+      <span class="gn-icon">✍️</span>
+      <div>
+        <p class="gn-label">Two-Signatory Rule</p>
+        <p class="gn-desc">All fund withdrawals require two authorized signatories</p>
+      </div>
+    </div>
+    <div class="gn-item">
+      <span class="gn-icon">📅</span>
+      <div>
+        <p class="gn-label">Quarterly Meetings</p>
+        <p class="gn-desc">Board meets at minimum every quarter per our constitution</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Loading -->
+<section class="section section--white" *ngIf="loading">
+  <div class="container members-skeleton">
+    <div class="skeleton" *ngFor="let s of [1,2,3,4]"
+         style="height:280px; border-radius:8px"></div>
+  </div>
+</section>
+
+<!-- Officials -->
+<section class="section section--white" *ngIf="!loading && officials.length">
+  <div class="container">
+    <div class="section-intro" appScrollReveal>
+      <span class="eyebrow eyebrow--green">Executive Officials</span>
+      <h2 class="section-heading text-navy">Elected Officers</h2>
+      <div class="ruled-divider ruled-divider--amber" style="margin-bottom:0">
+        <div class="ruled-divider__line"></div>
+      </div>
+    </div>
+    <div class="members-grid members-grid--officials">
+      <div
+        *ngFor="let m of officials; let i = index"
+        class="member-card card"
+        appScrollReveal
+        [class]="'fade-in-delay-' + ((i % 4) + 1)"
+      >
+        <div class="member-card__avatar" [class.has-photo]="m.photoUrl">
+          <img *ngIf="m.photoUrl" [src]="m.photoUrl" [alt]="m.firstName + ' ' + m.lastName">
+          <span *ngIf="!m.photoUrl" class="member-card__initials">
+            {{ getInitials(m) }}
+          </span>
+        </div>
+        <div class="member-card__body">
+          <p class="member-card__position">{{ m.position }}</p>
+          <h3 class="member-card__name">{{ m.firstName }} {{ m.lastName }}</h3>
+          <p class="member-card__bio" *ngIf="m.bio">{{ m.bio }}</p>
+          <p class="member-card__term" *ngIf="m.termStartDate">
+            Term from {{ m.termStartDate | date:'MMM yyyy' }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Board Members -->
+<section class="section section--parchment" *ngIf="!loading && boardMembers.length">
+  <div class="container">
+    <div class="section-intro" appScrollReveal>
+      <span class="eyebrow eyebrow--green">Board of Directors</span>
+      <h2 class="section-heading text-navy">Board Members</h2>
+    </div>
+    <div class="members-grid members-grid--board">
+      <div
+        *ngFor="let m of boardMembers; let i = index"
+        class="member-card card"
+        appScrollReveal
+        [class]="'fade-in-delay-' + ((i % 3) + 1)"
+      >
+        <div class="member-card__avatar">
+          <img *ngIf="m.photoUrl" [src]="m.photoUrl" [alt]="m.firstName + ' ' + m.lastName">
+          <span *ngIf="!m.photoUrl" class="member-card__initials">
+            {{ getInitials(m) }}
+          </span>
+        </div>
+        <div class="member-card__body">
+          <p class="member-card__position">{{ m.position }}</p>
+          <h3 class="member-card__name">{{ m.firstName }} {{ m.lastName }}</h3>
+          <p class="member-card__bio" *ngIf="m.bio">{{ m.bio }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section section--navy">
+  <div class="container text-center" appScrollReveal>
+    <span class="eyebrow eyebrow--mist">Full governance documentation</span>
+    <h2 class="section-heading text-white mb-24">
+      Read the full BFEF Kenya constitution
+    </h2>
+    <a routerLink="/constitution" class="btn btn--primary">View Constitution</a>
+  </div>
+</section>

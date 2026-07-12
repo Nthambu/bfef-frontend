@@ -1,0 +1,136 @@
+.page-header { padding-top: 120px; }
+
+.governance-note {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.gn-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.gn-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.gn-label {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+
+.gn-desc {
+  font-size: 13px;
+  color: var(--slate);
+  line-height: 1.5;
+}
+
+.section-intro {
+  margin-bottom: 40px;
+}
+
+.members-skeleton {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.members-grid--officials {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.members-grid--board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.member-card {
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.member-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.member-card__avatar {
+  width: 100%;
+  aspect-ratio: 1;
+  background: var(--navy-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.member-card__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.member-card__initials {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--amber);
+  opacity: 0.6;
+}
+
+.member-card__body {
+  padding: 20px;
+}
+
+.member-card__position {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 6px;
+}
+
+.member-card__name {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.member-card__bio {
+  font-size: 13px;
+  color: var(--slate);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.member-card__term {
+  font-size: 12px;
+  color: var(--mist);
+  border-top: 1px solid rgba(13,33,55,0.06);
+  padding-top: 10px;
+  margin-top: 10px;
+}
+
+@media (max-width: 1024px) {
+  .governance-note       { grid-template-columns: repeat(2, 1fr); }
+  .members-grid--officials { grid-template-columns: repeat(2, 1fr); }
+  .members-grid--board   { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .governance-note       { grid-template-columns: 1fr; }
+  .members-grid--officials { grid-template-columns: 1fr; }
+  .members-grid--board   { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,156 @@
+<section class="section section--navy page-header">
+  <div class="container" appScrollReveal>
+    <span class="eyebrow eyebrow--mist">Get in Touch</span>
+    <h1 class="display-2 text-white mb-16">Contact BFEF Kenya</h1>
+    <p style="color:rgba(255,255,255,0.7); max-width:520px; font-size:17px">
+      Whether you want to sponsor a child, explore a partnership, or simply
+      learn more — we'd love to hear from you.
+    </p>
+  </div>
+</section>
+
+<section class="section section--white">
+  <div class="container contact-layout">
+
+    <!-- Left: info + details -->
+    <div class="contact-info" appScrollReveal>
+      <span class="eyebrow eyebrow--green">Reach us directly</span>
+      <h2 class="section-heading text-navy mb-24">We respond within 24 hours</h2>
+
+      <div class="contact-details">
+        <div *ngFor="let d of contactDetails" class="contact-detail-item">
+          <span class="contact-detail-icon">{{ d.icon }}</span>
+          <div>
+            <p class="contact-detail-label">{{ d.label }}</p>
+            <p class="contact-detail-value">{{ d.value }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reason to reach out section -->
+      <div class="reach-out-box">
+        <p class="reach-out__heading">People reach out to us about:</p>
+        <ul class="reach-out__list">
+          <li *ngFor="let r of reasonOptions">
+            <span class="reach-out__dot"></span>{{ r }}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Right: form -->
+    <div class="contact-form-wrap" appScrollReveal>
+
+      <!-- Success state -->
+      <div class="form-success" *ngIf="state === 'success'">
+        <div class="success-icon">✓</div>
+        <h3>Message sent!</h3>
+        <p>
+          Thank you for reaching out. A member of our team will get back to
+          you within 24 hours at the email address you provided.
+        </p>
+        <button class="btn btn--outline-navy" (click)="state = 'idle'">
+          Send another message
+        </button>
+      </div>
+
+      <!-- Form -->
+      <div class="form-card card" *ngIf="state !== 'success'">
+        <div class="form-card__header">
+          <h3 class="form-card__title">Send us a message</h3>
+          <p class="form-card__subtitle">All fields marked * are required</p>
+        </div>
+
+        <div class="form-body">
+          <!-- Name -->
+          <div class="field">
+            <label class="field__label">Full name *</label>
+            <input
+              class="field__input"
+              [class.field__input--error]="isInvalid('name')"
+              type="text"
+              placeholder="Your full name"
+              [formControl]="$any(form.get('name'))"
+            >
+            <span class="field__error" *ngIf="isInvalid('name')">
+              Please enter your name
+            </span>
+          </div>
+
+          <!-- Email + Phone row -->
+          <div class="field-row">
+            <div class="field">
+              <label class="field__label">Email address *</label>
+              <input
+                class="field__input"
+                [class.field__input--error]="isInvalid('email')"
+                type="email"
+                placeholder="you@example.com"
+                [formControl]="$any(form.get('email'))"
+              >
+              <span class="field__error" *ngIf="isInvalid('email')">
+                Please enter a valid email
+              </span>
+            </div>
+            <div class="field">
+              <label class="field__label">Phone (optional)</label>
+              <input
+                class="field__input"
+                type="tel"
+                placeholder="+254 ..."
+                [formControl]="$any(form.get('phone'))"
+              >
+            </div>
+          </div>
+
+          <!-- Subject -->
+          <div class="field">
+            <label class="field__label">What is this about? *</label>
+            <select
+              class="field__input field__select"
+              [class.field__input--error]="isInvalid('subject')"
+              [formControl]="$any(form.get('subject'))"
+            >
+              <option value="" disabled>Select a subject</option>
+              <option *ngFor="let r of reasonOptions" [value]="r">{{ r }}</option>
+            </select>
+            <span class="field__error" *ngIf="isInvalid('subject')">
+              Please select a subject
+            </span>
+          </div>
+
+          <!-- Message -->
+          <div class="field">
+            <label class="field__label">Your message *</label>
+            <textarea
+              class="field__input field__textarea"
+              [class.field__input--error]="isInvalid('message')"
+              placeholder="Tell us what you have in mind..."
+              rows="5"
+              [formControl]="$any(form.get('message'))"
+            ></textarea>
+            <span class="field__error" *ngIf="isInvalid('message')">
+              Please enter a message (at least 10 characters)
+            </span>
+          </div>
+
+          <!-- Error banner -->
+          <div class="form-error-banner" *ngIf="state === 'error'">
+            ⚠️ {{ errorMsg }}
+          </div>
+
+          <!-- Submit -->
+          <button
+            class="btn btn--primary form-submit"
+            (click)="submit()"
+            [disabled]="state === 'loading'"
+          >
+            <span *ngIf="state !== 'loading'">Send Message</span>
+            <span *ngIf="state === 'loading'" class="loading-dots">Sending</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

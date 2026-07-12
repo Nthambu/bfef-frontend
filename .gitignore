@@ -1,0 +1,17 @@
+# Angular
+/dist
+/.angular
+/node_modules
+
+# Env
+.env
+
+# IDE
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

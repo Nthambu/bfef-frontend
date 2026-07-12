@@ -1,0 +1,103 @@
+<!-- Page header -->
+<section class="section section--navy page-header">
+  <div class="container" appScrollReveal>
+    <span class="eyebrow eyebrow--mist">Who We Are</span>
+    <h1 class="display-2 text-white mb-16">About BFEF Kenya</h1>
+    <p style="color:rgba(255,255,255,0.7); max-width:580px; font-size:17px">
+      A charitable foundation built on one conviction: that where a child is
+      born should not determine how far they can go.
+    </p>
+  </div>
+</section>
+
+<!-- Loading skeleton -->
+<section class="section section--white" *ngIf="loading">
+  <div class="container">
+    <div class="skeleton" style="height:180px; border-radius:8px"></div>
+  </div>
+</section>
+
+<!-- About content -->
+<section class="section section--white" *ngIf="!loading">
+  <div class="container about-grid">
+    <!-- Who we are -->
+    <div class="about-main" appScrollReveal>
+      <span class="eyebrow eyebrow--green">Our Story</span>
+      <h2 class="section-heading text-navy mb-24">
+        {{ pages['about']?.title ?? 'Who We Are' }}
+      </h2>
+      <div class="ruled-divider ruled-divider--amber mb-24">
+        <div class="ruled-divider__line"></div>
+      </div>
+      <p class="about-body">{{ pages['about']?.content }}</p>
+    </div>
+
+    <!-- Vision & Mission cards -->
+    <div class="vm-stack" appScrollReveal>
+      <div class="vm-card vm-card--vision">
+        <span class="eyebrow">Our Vision</span>
+        <p class="vm-text">{{ pages['vision']?.content }}</p>
+      </div>
+      <div class="vm-card vm-card--mission">
+        <span class="eyebrow eyebrow--green">Our Mission</span>
+        <p class="vm-text">{{ pages['mission']?.content }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Objectives -->
+<section class="section section--parchment" *ngIf="!loading">
+  <div class="container" appScrollReveal>
+    <div class="text-center mb-48">
+      <span class="eyebrow eyebrow--green">What We Set Out To Do</span>
+      <h2 class="section-heading text-navy">Our Objectives</h2>
+    </div>
+    <div class="objectives-grid">
+      <div
+        *ngFor="let obj of objectives; let i = index"
+        class="objective-item"
+        appScrollReveal
+        [class]="'fade-in-delay-' + ((i % 4) + 1)"
+      >
+        <span class="objective-num">{{ i + 1 < 10 ? '0' + (i + 1) : (i + 1) }}</span>
+        <p class="objective-text">{{ obj }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Core Values -->
+<section class="section section--white" *ngIf="!loading">
+  <div class="container">
+    <div class="text-center mb-48" appScrollReveal>
+      <span class="eyebrow eyebrow--green">What We Stand For</span>
+      <h2 class="section-heading text-navy">Our Core Values</h2>
+    </div>
+    <div class="values-grid">
+      <div
+        *ngFor="let val of coreValues; let i = index"
+        class="value-card card"
+        appScrollReveal
+        [class]="'fade-in-delay-' + ((i % 4) + 1)"
+      >
+        <h3 class="value-title">{{ val.label }}</h3>
+        <p class="value-desc text-slate">{{ val.desc }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section section--navy">
+  <div class="container text-center" appScrollReveal>
+    <span class="eyebrow eyebrow--mist">Ready to make a difference?</span>
+    <h2 class="section-heading text-white mb-24">
+      Partner with us to change lives
+    </h2>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap">
+      <a routerLink="/leadership" class="btn btn--primary">Meet the Board</a>
+      <a routerLink="/constitution" class="btn btn--outline">View Constitution</a>
+    </div>
+  </div>
+</section>

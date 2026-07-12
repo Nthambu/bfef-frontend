@@ -1,0 +1,92 @@
+<section class="section section--navy page-header">
+  <div class="container" appScrollReveal>
+    <span class="eyebrow eyebrow--mist">Legal Document</span>
+    <h1 class="display-2 text-white mb-16">BFEF Kenya Constitution</h1>
+    <p style="color:rgba(255,255,255,0.7); max-width:560px; font-size:17px">
+      Our foundation is governed by a formal constitution adopted by founding
+      members. Read it in full below.
+    </p>
+    <div style="margin-top:32px; display:flex; gap:16px; flex-wrap:wrap">
+      <a href="/assets/constitution.pdf" download class="btn btn--primary">
+        ⬇ Download PDF
+      </a>
+      <a routerLink="/contact" class="btn btn--outline">
+        Have a question? Contact us
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Trust bar -->
+<section class="section section--parchment">
+  <div class="container trust-bar" appScrollReveal>
+    <div class="trust-item">
+      <span class="trust-icon">📋</span>
+      <span class="trust-label">Formally adopted 2026</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-icon">👥</span>
+      <span class="trust-label">Signed by founding members</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-icon">⚖️</span>
+      <span class="trust-label">15 governing articles</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-icon">🏛️</span>
+      <span class="trust-label">Registered in Kenya</span>
+    </div>
+  </div>
+</section>
+
+<!-- Articles accordion -->
+<section class="section section--white">
+  <div class="container">
+    <div class="articles-layout">
+      <!-- Sticky TOC sidebar -->
+      <aside class="toc">
+        <p class="toc__heading">Articles</p>
+        <ul class="toc__list">
+          <li
+            *ngFor="let art of articles"
+            class="toc__item"
+            [class.active]="activeArticle === art.number"
+            (click)="toggle(art.number)"
+          >
+            <span class="toc__num">{{ art.number }}</span>
+            <span class="toc__title">{{ art.title }}</span>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- Accordion articles -->
+      <div class="articles-list">
+        <div
+          *ngFor="let art of articles; let i = index"
+          class="article-item"
+          appScrollReveal
+          [class.open]="activeArticle === art.number"
+        >
+          <button
+            class="article-header"
+            (click)="toggle(art.number)"
+          >
+            <div class="article-header__left">
+              <span class="article-num">Article {{ art.number }}</span>
+              <span class="article-title">{{ art.title }}</span>
+            </div>
+            <span class="article-chevron">
+              {{ activeArticle === art.number ? '−' : '+' }}
+            </span>
+          </button>
+
+          <div class="article-body" [class.visible]="activeArticle === art.number">
+            <ul class="article-content">
+              <li *ngFor="let line of art.content">{{ line }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
