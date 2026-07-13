@@ -3,7 +3,9 @@
   <div class="container" appScrollReveal>
     <span class="eyebrow eyebrow--mist">Who We Are</span>
     <h1 class="display-2 text-white mb-16">About BFEF Kenya</h1>
-    <p style="color:rgba(255,255,255,0.7); max-width:580px; font-size:17px">
+    <p
+      style="color: rgba(255, 255, 255, 0.7); max-width: 580px; font-size: 17px"
+    >
       A charitable foundation built on one conviction: that where a child is
       born should not determine how far they can go.
     </p>
@@ -13,7 +15,7 @@
 <!-- Loading skeleton -->
 <section class="section section--white" *ngIf="loading">
   <div class="container">
-    <div class="skeleton" style="height:180px; border-radius:8px"></div>
+    <div class="skeleton" style="height: 180px; border-radius: 8px"></div>
   </div>
 </section>
 
@@ -24,23 +26,29 @@
     <div class="about-main" appScrollReveal>
       <span class="eyebrow eyebrow--green">Our Story</span>
       <h2 class="section-heading text-navy mb-24">
-        {{ pages['about']?.title ?? 'Who We Are' }}
+        {{ pages["ourStory"]?.title | titlecase }}
       </h2>
       <div class="ruled-divider ruled-divider--amber mb-24">
         <div class="ruled-divider__line"></div>
       </div>
-      <p class="about-body">{{ pages['about']?.content }}</p>
+      <p class="about-body">
+        {{ pages["ourStory"]?.content }}
+      </p>
     </div>
 
     <!-- Vision & Mission cards -->
     <div class="vm-stack" appScrollReveal>
       <div class="vm-card vm-card--vision">
         <span class="eyebrow">Our Vision</span>
-        <p class="vm-text">{{ pages['vision']?.content }}</p>
+        <p class="vm-text">
+          {{ pages["Vision"]?.content }}
+        </p>
       </div>
       <div class="vm-card vm-card--mission">
         <span class="eyebrow eyebrow--green">Our Mission</span>
-        <p class="vm-text">{{ pages['mission']?.content }}</p>
+        <p class="vm-text">
+          {{ pages["Mission"]?.content }}
+        </p>
       </div>
     </div>
   </div>
@@ -60,7 +68,9 @@
         appScrollReveal
         [class]="'fade-in-delay-' + ((i % 4) + 1)"
       >
-        <span class="objective-num">{{ i + 1 < 10 ? '0' + (i + 1) : (i + 1) }}</span>
+        <span class="objective-num">{{
+          i + 1 < 10 ? "0" + (i + 1) : i + 1
+        }}</span>
         <p class="objective-text">{{ obj }}</p>
       </div>
     </div>
@@ -95,9 +105,13 @@
     <h2 class="section-heading text-white mb-24">
       Partner with us to change lives
     </h2>
-    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap">
+    <div
+      style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap"
+    >
       <a routerLink="/leadership" class="btn btn--primary">Meet the Board</a>
-      <a routerLink="/constitution" class="btn btn--outline">View Constitution</a>
+      <a routerLink="/constitution" class="btn btn--outline"
+        >View Constitution</a
+      >
     </div>
   </div>
 </section>

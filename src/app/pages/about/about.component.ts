@@ -13,9 +13,8 @@ import { ScrollRevealDirective } from '../../shared/directives/scroll-reveal.dir
   styleUrls: ['./about.component.css'],
 })
 export class AboutComponent implements OnInit {
-  pages: Record<string, Page> = {};
+  pages: Record<string , Page> = {};
   loading = true;
-
   objectives: string[] = [];
 
   coreValues = [
@@ -28,18 +27,13 @@ export class AboutComponent implements OnInit {
     { label: 'Service',        desc: 'We exist to serve — not to profit, not to grow for its own sake.' },
   ];
 
-  constructor(private api: ApiService) {}
+  constructor(private readonly api: ApiService) {}
 
   ngOnInit(): void {
     this.api.getAllPages().subscribe({
-      next: (pages) => {
-        pages.forEach((p) => (this.pages[p.slug] = p));
-        // Parse objectives into array
-        const objContent = this.pages['objectives']?.content ?? '';
-        this.objectives = objContent
-          .split('\n')
-          .map((l) => l.replace(/^\d+\.\s*/, '').trim())
-          .filter((l) => l.length > 0);
+      next: (response) => {
+const pages=response;
+         pages.forEach((p) => (this.pages[p.slug] = p));
         this.loading = false;
       },
       error: () => (this.loading = false),
