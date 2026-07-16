@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: bfef-kenya-frontend
+    env: static
+    buildCommand: npm install && npm run build:prod
+    staticPublishPath: ./dist/bfef-kenya-frontend
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
