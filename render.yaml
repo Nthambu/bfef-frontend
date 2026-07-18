@@ -3,7 +3,7 @@ services:
     name: bfef-kenya-frontend
     env: static
     buildCommand: npm install && npm run build:prod
-    staticPublishPath: ./dist/bfef-kenya-frontend
+    staticPublishPath: ./dist/bfef-kenya-frontend/browser
     routes:
       - type: rewrite
         source: /*
