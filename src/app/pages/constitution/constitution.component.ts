@@ -21,7 +21,6 @@ export class ConstitutionComponent implements OnInit {
   loading = true;
 
   // Hardcoded from the constitution document — these are formal
-  // legal articles and don't change often. Update the seed data
   // and re-fetch if needed in a future sprint.
   articles: ConstitutionArticle[] = [
     {
